@@ -1,0 +1,37 @@
+<!-- <pre>{{Users | json}}</pre> -->
+<div class="container">
+    <section>
+        <button class="btn btn-primary mt-5 mb-2">Add</button>
+    </section>
+    <section>
+        <div class="card mb-2">
+            <div class="card-body">                
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">name</th>
+                        <th scope="col">username</th>
+                        <th scope="col">email</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let user of Users">
+                        <th scope="row" >{{user.id}}</th>
+                        <td>{{user.name}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.email}}</td>
+                        <td>
+                            <a href="#VerMais"><button class="btn ml-1"><fa-icon [icon]="faEye"></fa-icon></button></a>
+                            <a href="#Editar/{{user.id}}"><button class="btn ml-1"><fa-icon [icon]="faPenSquare"></fa-icon></button></a>
+                            <a href="#Excluir/{{user.id}}"><button class="btn ml-1"><fa-icon [icon]="faTrash"></fa-icon></button></a>
+                        </td>
+                      </tr>                      
+                    </tbody>
+                </table> 
+            </div>
+        </div>
+    </section>
+</div>
+
