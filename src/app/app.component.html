@@ -1,1 +1,9 @@
-<app-news ></app-news>
+<div class="container">
+<section>        
+    <a [routerLink]="['/']"><button class="btn btn-outline-primary mt-5 mb-2 ml-1"><fa-icon [icon]="faEye"></fa-icon></button></a>
+    <button class="btn btn-primary mt-5 mb-2 ml-1">Add</button>
+</section>
+<router-outlet></router-outlet>
+<!-- <app-news></app-news> -->
+
+</div>

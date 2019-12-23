@@ -1,19 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-import { faEye, faPenSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPenSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  styleUrls: ['./news.component.css'],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class NewsComponent implements OnInit {
-  faEye = faEye;
-  faPenSquare = faPenSquare;
   faTrash = faTrash;
+  faPenSquare = faPenSquare;
   Users;
+  private deletarUser: string;
+  private deletarUserId: number;
     
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, config: NgbModalConfig, private modalService: NgbModal) { 
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit() {
     this.apiService.getUsers().subscribe((data)=>{
@@ -21,6 +28,17 @@ export class NewsComponent implements OnInit {
       this.Users = data;
     });
      
+  }
+
+  open(content, user, deletarUserId) {
+    this.modalService.open(content);
+    this.deletarUser = user;
+    this.deletarUserId = deletarUserId;
+  }
+
+  deletar(deletarUserId){
+    console.log(deletarUserId);
+    
   }
 
 }
